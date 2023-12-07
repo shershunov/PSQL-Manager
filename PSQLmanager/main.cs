@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Data;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Npgsql; 
 
-namespace BD
+namespace PSQL
 {
     public partial class main : Form
     {
@@ -12,24 +13,51 @@ namespace BD
         DataTable dataTable;
         string currentTable;
 
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern IntPtr LoadCursorFromFile(string fileName);
+        private void setCursor()
+        {
+            IntPtr customCursor = LoadCursorFromFile("C:\\Windows\\Cursors\\aero_link.cur");
+            if (customCursor != IntPtr.Zero)
+            {
+                foreach (Control control in Controls)
+                {
+                    if (control is Button)
+                    {
+                        ((Button)control).Cursor = new Cursor(customCursor);
+                    }
+                }
+            }
+            else
+            {
+                foreach (Control control in Controls)
+                {
+                    if (control is Button)
+                    {
+                        ((Button)control).Cursor = Cursors.Hand;
+                    }
+                }
+            }
+        }
+
         public main()
         {
-            InitializeComponent(); 
-            connectBD("localhost", "5432", "postgres", "123", "db");
+            InitializeComponent();
+            setCursor();
+            //connectBD("localhost", "5432", "postgres", "123", "db");
         }
 
         private void getTableNames()
         {
             try
             {
-
                 DataTable schema = connection.GetSchema("Tables");
                 foreach (DataRow row in schema.Rows)
                 {
                     string tableName = row["table_name"].ToString();
                     tablesComboBox.Items.Add(tableName);
                 }
-
             }
             catch (Exception ex)
             {
@@ -39,9 +67,9 @@ namespace BD
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            try {
-                if (connection != null)
-                {
+            if (connection != null)
+            {
+                try {
                     DataTable schemaTable = new DataTable();
                     using (NpgsqlCommand schemaCommand = new NpgsqlCommand($"SELECT * FROM {currentTable} WHERE 1=0", connection))
                     {
@@ -71,7 +99,6 @@ namespace BD
                                 updateQuery += ", ";
                             }
                         }
-
 
                         updateQuery += $" WHERE id = @id";
 
@@ -163,10 +190,14 @@ namespace BD
                     }
                 ((DataTable)dataGridView.DataSource).AcceptChanges();
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"БД не подключена!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -187,18 +218,25 @@ namespace BD
 
         private void displayData(object sender, EventArgs e)
         {
-            try
+            if (connection != null)
             {
-                currentTable = tablesComboBox.SelectedItem.ToString();
-                string sql = $"SELECT * FROM {currentTable}";
-                adapter = new NpgsqlDataAdapter(sql, connection);
-                dataTable = new DataTable();
-                adapter.Fill(dataTable);
-                dataGridView.DataSource = dataTable;
+                try
+                {
+                    currentTable = tablesComboBox.SelectedItem.ToString();
+                    string sql = $"SELECT * FROM {currentTable}";
+                    adapter = new NpgsqlDataAdapter(sql, connection);
+                    dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dataGridView.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при отображении таблицы: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Ошибка при отображении таблицы: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"БД не подключена!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

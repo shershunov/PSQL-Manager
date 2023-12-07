@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace BD
+namespace PSQL
 {
     public partial class InputDialog : Form
     {
@@ -11,9 +12,38 @@ namespace BD
         public string Password { get; private set; }
         public string Database { get; private set; }
 
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern IntPtr LoadCursorFromFile(string fileName);
+        private void setCursor()
+        {
+            IntPtr customCursor = LoadCursorFromFile("C:\\Windows\\Cursors\\aero_link.cur");
+            if (customCursor != IntPtr.Zero)
+            {
+                foreach (Control control in Controls)
+                {
+                    if (control is Button)
+                    {
+                        ((Button)control).Cursor = new Cursor(customCursor);
+                    }
+                }
+            }
+            else
+            {
+                foreach (Control control in Controls)
+                {
+                    if (control is Button)
+                    {
+                        ((Button)control).Cursor = Cursors.Hand;
+                    }
+                }
+            }
+        }
+
         public InputDialog()
         {
             InitializeComponent();
+            setCursor();
         }
 
         private void OKButton_Click(object sender, EventArgs e)

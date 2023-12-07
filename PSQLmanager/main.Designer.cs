@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace BD
+namespace PSQL
 {
     partial class main
     {
@@ -8,7 +8,6 @@ namespace BD
         /// Обязательная переменная конструктора.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Освободить все используемые ресурсы.
         /// </summary>
@@ -23,14 +22,13 @@ namespace BD
         }
 
         #region Код, автоматически созданный конструктором форм Windows
-
+        
         /// <summary>
         /// Требуемый метод для поддержки конструктора — не изменяйте 
         /// содержимое этого метода с помощью редактора кода.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.connectDialog = new System.Windows.Forms.Button();
             this.tablesComboBox = new System.Windows.Forms.ComboBox();
@@ -106,6 +104,7 @@ namespace BD
             // 
             // main
             // 
+            this.AcceptButton = this.saveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -117,7 +116,7 @@ namespace BD
             this.Controls.Add(this.connectDialog);
             this.Controls.Add(this.dataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = Properties.Resources.favicon;
+            this.Icon = psqlm.Properties.Resources.favicon;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(880, 590);

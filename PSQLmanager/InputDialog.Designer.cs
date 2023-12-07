@@ -1,4 +1,4 @@
-﻿namespace BD
+﻿namespace PSQL
 {
     partial class InputDialog
     {
@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -19,9 +18,9 @@
             }
             base.Dispose(disposing);
         }
-
+        
         #region Windows Form Designer generated code
-
+        
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -35,18 +34,19 @@
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.databaseTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.hostLabel = new System.Windows.Forms.Label();
+            this.portLabel = new System.Windows.Forms.Label();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.databaseLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // OKButton
             // 
-            this.OKButton.Location = new System.Drawing.Point(40, 260);
+            this.OKButton.Location = new System.Drawing.Point(60, 400);
+            this.OKButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(75, 23);
+            this.OKButton.Size = new System.Drawing.Size(112, 35);
             this.OKButton.TabIndex = 0;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
@@ -54,9 +54,10 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(155, 260);
+            this.CancelButton.Location = new System.Drawing.Point(232, 400);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.Size = new System.Drawing.Size(112, 35);
             this.CancelButton.TabIndex = 1;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -64,94 +65,104 @@
             // 
             // hostTextBox
             // 
-            this.hostTextBox.Location = new System.Drawing.Point(40, 34);
+            this.hostTextBox.Location = new System.Drawing.Point(60, 52);
+            this.hostTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.hostTextBox.Name = "hostTextBox";
-            this.hostTextBox.Size = new System.Drawing.Size(190, 20);
+            this.hostTextBox.Size = new System.Drawing.Size(283, 26);
             this.hostTextBox.TabIndex = 2;
             // 
             // portTextBox
             // 
-            this.portTextBox.Location = new System.Drawing.Point(40, 78);
+            this.portTextBox.Location = new System.Drawing.Point(60, 120);
+            this.portTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.portTextBox.Name = "portTextBox";
-            this.portTextBox.Size = new System.Drawing.Size(190, 20);
+            this.portTextBox.Size = new System.Drawing.Size(283, 26);
             this.portTextBox.TabIndex = 3;
             // 
             // usernameTextBox
             // 
-            this.usernameTextBox.Location = new System.Drawing.Point(40, 122);
+            this.usernameTextBox.Location = new System.Drawing.Point(60, 188);
+            this.usernameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(190, 20);
+            this.usernameTextBox.Size = new System.Drawing.Size(283, 26);
             this.usernameTextBox.TabIndex = 4;
             // 
             // databaseTextBox
             // 
-            this.databaseTextBox.Location = new System.Drawing.Point(40, 210);
+            this.databaseTextBox.Location = new System.Drawing.Point(60, 323);
+            this.databaseTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.databaseTextBox.Name = "databaseTextBox";
-            this.databaseTextBox.Size = new System.Drawing.Size(190, 20);
+            this.databaseTextBox.Size = new System.Drawing.Size(283, 26);
             this.databaseTextBox.TabIndex = 6;
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(40, 166);
+            this.passwordTextBox.Location = new System.Drawing.Point(60, 255);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(190, 20);
+            this.passwordTextBox.Size = new System.Drawing.Size(283, 26);
             this.passwordTextBox.TabIndex = 5;
             // 
-            // label1
+            // hostLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Host:";
+            this.hostLabel.AutoSize = true;
+            this.hostLabel.Location = new System.Drawing.Point(18, 28);
+            this.hostLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.hostLabel.Name = "hostLabel";
+            this.hostLabel.Size = new System.Drawing.Size(47, 20);
+            this.hostLabel.TabIndex = 7;
+            this.hostLabel.Text = "Host:";
             // 
-            // label2
+            // portLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Port:";
+            this.portLabel.AutoSize = true;
+            this.portLabel.Location = new System.Drawing.Point(18, 95);
+            this.portLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.portLabel.Name = "portLabel";
+            this.portLabel.Size = new System.Drawing.Size(42, 20);
+            this.portLabel.TabIndex = 8;
+            this.portLabel.Text = "Port:";
             // 
-            // label3
+            // usernameLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 106);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Username:";
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Location = new System.Drawing.Point(18, 163);
+            this.usernameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(87, 20);
+            this.usernameLabel.TabIndex = 9;
+            this.usernameLabel.Text = "Username:";
             // 
-            // label4
+            // passwordLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Password:";
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Location = new System.Drawing.Point(18, 231);
+            this.passwordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(82, 20);
+            this.passwordLabel.TabIndex = 10;
+            this.passwordLabel.Text = "Password:";
             // 
-            // label5
+            // databaseLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 194);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "DB name:";
+            this.databaseLabel.AutoSize = true;
+            this.databaseLabel.Location = new System.Drawing.Point(18, 298);
+            this.databaseLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.databaseLabel.Name = "databaseLabel";
+            this.databaseLabel.Size = new System.Drawing.Size(127, 20);
+            this.databaseLabel.TabIndex = 11;
+            this.databaseLabel.Text = "Database name:";
             // 
             // InputDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 301);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(396, 462);
+            this.Controls.Add(this.databaseLabel);
+            this.Controls.Add(this.passwordLabel);
+            this.Controls.Add(this.usernameLabel);
+            this.Controls.Add(this.portLabel);
+            this.Controls.Add(this.hostLabel);
             this.Controls.Add(this.databaseTextBox);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.usernameTextBox);
@@ -160,14 +171,16 @@
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(418, 518);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(418, 518);
             this.Name = "InputDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "DB connection";
+            this.Text = "Подключение к БД";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -179,10 +192,10 @@
         private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.TextBox databaseTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label hostLabel;
+        private System.Windows.Forms.Label portLabel;
+        private System.Windows.Forms.Label usernameLabel;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Label databaseLabel;
     }
 }
