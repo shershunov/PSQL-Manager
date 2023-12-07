@@ -91,7 +91,7 @@ namespace PSQL
             this.tabaleNameLabel.Name = "tabaleNameLabel";
             this.tabaleNameLabel.Size = new System.Drawing.Size(79, 20);
             this.tabaleNameLabel.TabIndex = 4;
-            this.tabaleNameLabel.Text = "Таблицы:";
+            this.tabaleNameLabel.Text = "Таблица:";
             // 
             // updateButton
             // 
