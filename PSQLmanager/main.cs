@@ -3,7 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Npgsql; 
+using Npgsql;
 
 namespace PSQL
 {
