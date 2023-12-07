@@ -71,6 +71,7 @@ namespace PSQL
             this.tablesComboBox.Size = new System.Drawing.Size(199, 28);
             this.tablesComboBox.TabIndex = 2;
             this.tablesComboBox.SelectedIndexChanged += new System.EventHandler(this.displayData);
+            this.tablesComboBox.Enabled = false;
             // 
             // saveButton
             // 
@@ -82,6 +83,7 @@ namespace PSQL
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            this.saveButton.Enabled = false;
             // 
             // tabaleNameLabel
             // 
@@ -103,6 +105,7 @@ namespace PSQL
             this.updateButton.Text = "Обновить";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.displayData);
+            this.updateButton.Enabled = false;
             // 
             // statusLabel
             // 
@@ -124,6 +127,7 @@ namespace PSQL
             this.disconnectButton.Text = "Отключить";
             this.disconnectButton.UseVisualStyleBackColor = true;
             this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
+            this.disconnectButton.Enabled = false;
             // 
             // main
             // 

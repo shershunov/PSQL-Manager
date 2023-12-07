@@ -48,11 +48,6 @@ namespace PSQL
             setCursor();
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(bindKeys);
-            disconnectButton.Enabled = false;
-            updateButton.Enabled = false;
-            saveButton.Enabled = false;
-            tablesComboBox.Enabled = false;
-            connectBD("localhost", "5432", "postgres", "123", "db");
         }
 
         private void connectedStatus()
