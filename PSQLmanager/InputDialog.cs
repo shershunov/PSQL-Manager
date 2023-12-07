@@ -69,7 +69,7 @@ namespace PSQL
                 string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password) ||
                 string.IsNullOrWhiteSpace(Database))
             {
-                MessageBox.Show("Пожалуйста, заполните все поля.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please fill in all the fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             DialogResult = DialogResult.OK;

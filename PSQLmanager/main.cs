@@ -52,7 +52,7 @@ namespace PSQL
 
         private void connectedStatus()
         {
-            statusLabel.Text = "Подключено";
+            statusLabel.Text = "Connected";
             statusLabel.ForeColor = Color.Green;
         }
 
@@ -83,7 +83,7 @@ namespace PSQL
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при получении имен таблиц: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error getting table names: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -137,7 +137,6 @@ namespace PSQL
 
                         NpgsqlCommand command = connection.CreateCommand();
 
-                        // Проверяем, существует ли уже строка с такими значениями
                         string checkQuery = $"SELECT COUNT(*) FROM {currentTable} WHERE ";
                         for (int i = 0; i < schemaTable.Columns.Count; i++)
                         {
@@ -155,7 +154,6 @@ namespace PSQL
                         command.CommandText = checkQuery;
                         int rowCount = Convert.ToInt32(command.ExecuteScalar());
 
-                        // Если строка не существует, выполняем INSERT
                         if (rowCount == 0)
                         {
                             string insertQuery = $"INSERT INTO {currentTable} (";
@@ -215,7 +213,7 @@ namespace PSQL
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Saving error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -235,7 +233,7 @@ namespace PSQL
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при подключении к бд: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error connecting to the DB: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -254,7 +252,7 @@ namespace PSQL
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Ошибка при отображении таблицы: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error when displaying the table: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -284,7 +282,7 @@ namespace PSQL
                 adapter = null;
                 tablesComboBox.Items.Clear();
                 tablesComboBox.Text = string.Empty;
-                this.statusLabel.Text = "Нет подключения";
+                this.statusLabel.Text = "No connection";
                 this.statusLabel.ForeColor = Color.Red;
                 dataGridView.Columns.Clear();
                 dataGridView.DataSource = null;

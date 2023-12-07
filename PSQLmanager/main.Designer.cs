@@ -58,7 +58,7 @@ namespace PSQL
             this.connectDialog.Name = "connectDialog";
             this.connectDialog.Size = new System.Drawing.Size(190, 72);
             this.connectDialog.TabIndex = 1;
-            this.connectDialog.Text = "Подключить БД";
+            this.connectDialog.Text = "Connect DB";
             this.connectDialog.UseVisualStyleBackColor = true;
             this.connectDialog.Click += new System.EventHandler(this.connectDialog_Click);
             // 
@@ -80,7 +80,7 @@ namespace PSQL
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(112, 35);
             this.saveButton.TabIndex = 3;
-            this.saveButton.Text = "Сохранить";
+            this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             this.saveButton.Enabled = false;
@@ -93,7 +93,7 @@ namespace PSQL
             this.tabaleNameLabel.Name = "tabaleNameLabel";
             this.tabaleNameLabel.Size = new System.Drawing.Size(79, 20);
             this.tabaleNameLabel.TabIndex = 4;
-            this.tabaleNameLabel.Text = "Таблица:";
+            this.tabaleNameLabel.Text = "Table:";
             // 
             // updateButton
             // 
@@ -102,7 +102,7 @@ namespace PSQL
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(112, 35);
             this.updateButton.TabIndex = 5;
-            this.updateButton.Text = "Обновить";
+            this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.displayData);
             this.updateButton.Enabled = false;
@@ -114,7 +114,7 @@ namespace PSQL
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(147, 23);
             this.statusLabel.TabIndex = 6;
-            this.statusLabel.Text = "Нет подключения";
+            this.statusLabel.Text = "No connection";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // disconnectButton
@@ -124,7 +124,7 @@ namespace PSQL
             this.disconnectButton.Name = "disconnectButton";
             this.disconnectButton.Size = new System.Drawing.Size(112, 35);
             this.disconnectButton.TabIndex = 7;
-            this.disconnectButton.Text = "Отключить";
+            this.disconnectButton.Text = "Disconnect";
             this.disconnectButton.UseVisualStyleBackColor = true;
             this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
             this.disconnectButton.Enabled = false;

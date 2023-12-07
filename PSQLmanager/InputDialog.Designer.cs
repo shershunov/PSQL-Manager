@@ -181,7 +181,7 @@
             this.MinimumSize = new System.Drawing.Size(418, 518);
             this.Name = "InputDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Подключение к БД";
+            this.Text = "Connect DB";
             this.ResumeLayout(false);
             this.PerformLayout();
 
