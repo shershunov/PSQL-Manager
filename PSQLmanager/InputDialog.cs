@@ -43,9 +43,21 @@ namespace PSQL
         public InputDialog()
         {
             InitializeComponent();
-            setCursor();
+            setCursor(); 
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(bindKeys);
         }
-
+        private void bindKeys(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                CancelButton_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                OKButton_Click(sender, e);
+            }
+        }
         private void OKButton_Click(object sender, EventArgs e)
         {
             Host = hostTextBox.Text;

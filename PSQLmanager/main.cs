@@ -46,6 +46,19 @@ namespace PSQL
             InitializeComponent();
             setCursor();
             //connectBD("localhost", "5432", "postgres", "123", "db");
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(bindKeys);
+        }
+        private void bindKeys(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                saveButton_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                displayData(sender, e);
+            }
         }
 
         private void getTableNames()
@@ -188,6 +201,7 @@ namespace PSQL
                             }
                         }
                     }
+
                 ((DataTable)dataGridView.DataSource).AcceptChanges();
                 }
                 catch (Exception ex)
