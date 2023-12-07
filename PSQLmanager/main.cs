@@ -45,7 +45,6 @@ namespace PSQL
         {
             InitializeComponent();
             setCursor();
-            //connectBD("localhost", "5432", "postgres", "123", "db");
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(bindKeys);
         }
