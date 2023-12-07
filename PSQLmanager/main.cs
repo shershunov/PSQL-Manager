@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Npgsql; 
@@ -47,7 +48,19 @@ namespace PSQL
             setCursor();
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(bindKeys);
+            disconnectButton.Enabled = false;
+            updateButton.Enabled = false;
+            saveButton.Enabled = false;
+            tablesComboBox.Enabled = false;
+            connectBD("localhost", "5432", "postgres", "123", "db");
         }
+
+        private void connectedStatus()
+        {
+            statusLabel.Text = "Подключено";
+            statusLabel.ForeColor = Color.Green;
+        }
+
         private void bindKeys(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.S)
@@ -70,6 +83,8 @@ namespace PSQL
                     string tableName = row["table_name"].ToString();
                     tablesComboBox.Items.Add(tableName);
                 }
+                tablesComboBox.Enabled = true;
+                tablesComboBox.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -208,10 +223,6 @@ namespace PSQL
                     MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-            {
-                MessageBox.Show($"БД не подключена!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
         private void connectBD(string host, string port, string username, string password, string database)
@@ -221,7 +232,11 @@ namespace PSQL
                 string connectionString = $"Host={host};Port={port};Username={username};Password={password};Database={database};";
                 connection = new NpgsqlConnection(connectionString);
                 connection.Open();
+                disconnectButton.Enabled = true;
+                updateButton.Enabled = true;
+                saveButton.Enabled = true;
                 getTableNames();
+                connectedStatus();
             }
             catch (Exception ex)
             {
@@ -247,10 +262,6 @@ namespace PSQL
                     MessageBox.Show($"Ошибка при отображении таблицы: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-            {
-                MessageBox.Show($"БД не подключена!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
         private void connectDialog_Click(object sender, EventArgs e)
@@ -266,6 +277,26 @@ namespace PSQL
                     string database = inputDialog.Database;
                     connectBD(host, port, username, password, database);
                 }
+            }
+        }
+
+        private void disconnectButton_Click(object sender, EventArgs e)
+        {
+            if (connection != null)
+            {
+                connection.Close();
+                connection = null;
+                adapter = null;
+                tablesComboBox.Items.Clear();
+                tablesComboBox.Text = string.Empty;
+                this.statusLabel.Text = "Нет подключения";
+                this.statusLabel.ForeColor = Color.Red;
+                dataGridView.Columns.Clear();
+                dataGridView.DataSource = null;
+                disconnectButton.Enabled = false;
+                updateButton.Enabled = false;
+                saveButton.Enabled = false;
+                tablesComboBox.Enabled = false;
             }
         }
     }
