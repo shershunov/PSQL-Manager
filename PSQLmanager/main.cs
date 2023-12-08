@@ -54,6 +54,9 @@ namespace PSQL
         {
             statusLabel.Text = "Connected";
             statusLabel.ForeColor = Color.Green;
+            disconnectButton.Enabled = true;
+            updateButton.Enabled = true;
+            saveButton.Enabled = true;
         }
 
         private void bindKeys(object sender, KeyEventArgs e)
@@ -225,9 +228,6 @@ namespace PSQL
                 string connectionString = $"Host={host};Port={port};Username={username};Password={password};Database={database};";
                 connection = new NpgsqlConnection(connectionString);
                 connection.Open();
-                disconnectButton.Enabled = true;
-                updateButton.Enabled = true;
-                saveButton.Enabled = true;
                 getTableNames();
                 connectedStatus();
             }
